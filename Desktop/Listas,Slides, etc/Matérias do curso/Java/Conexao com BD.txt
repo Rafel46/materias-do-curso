@@ -1,0 +1,39 @@
+import java.sql.*;
+public class ConexaoBD {
+    // Configurando o Driver JDBC driver
+                                //"jdbc:postgresql://localhost/sicoc"
+    static final String DRIVER = "com.mysql.jdbc.Driver";
+                                //"org.postgresql.Driver"
+    static final String BANCO = "jdbc:mysql://localhost/cadastros";
+
+    // Credenciais de acesso ao Mysql
+                                //postgres
+    static final String USUARIO = "root";
+                               //postgres
+    static final String SENHA = "mysql";
+
+    public static void executarSQL(String sql) {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            Class.forName(DRIVER);
+            System.out.println("Conectando no Banco de Dados...");
+            conn = DriverManager.getConnection(BANCO, USUARIO, SENHA);
+            System.out.println("Banco de Dados conectado com sucesso!...");
+
+            stmt = conn.createStatement();
+            
+            System.out.println("Executando a instrução em SQL...");
+            stmt.executeUpdate(sql);
+            System.out.println("Instrução em SQL executada com sucesso!...");
+
+            System.out.println("Fechando a conexão com o Banco de Dados...");
+            conn.close();
+            System.out.println("Conexão com Banco de Dados finalizada com sucesso!...");
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro: " + e.getMessage());
+        }
+    }
+}
+
+

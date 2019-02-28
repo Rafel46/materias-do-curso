@@ -1,0 +1,56 @@
+package javaapplication5;
+
+import java.util.Delay;
+import lejos.nxt.NXTMotor;
+import lejos.nxt.LCD;
+import lejos.nxt.MotorPort;
+
+public class JavaApplication5 {
+public static void vamofazerMostrar(){
+         for(int i=0;i<=100;i++){
+			if(i<48&& i % 3 == 0) {
+             if (i<48 && i % 2 == 0) {
+                 LCD.drawString(i,0,0);
+                 LCD.drawString("é multiplo de 2 e de 3",0,2);
+                Delay.msDelay(2000);
+                
+              
+             }
+                           
+         }
+                  
+                       
+       
+         		}
+      LCD.drawString("como o ultimo numero é 42, o 7o multiplo de 2 e de 3 é 42",0,7);
+      Delay.msDelay(4000);
+      
+	}
+   
+    
+
+
+
+    
+     
+    public static void main(String[] args) {
+
+    vamofazerMostrar();
+    NXTMotor ma = new NXTMotor(MotorPort.A);
+    NXTMotor mb = new NXTMotor(MotorPort.B);
+    ma.setpower(velocidadedoMotor());
+    mb.setPower(velocidadedoMotor());
+    ma.forward();
+    mb.backward();
+    Delay.msDelay(9000);
+       
+    }
+    
+public static int velocidadedoMotor(){
+    int a = 2;
+    int b = 3;
+    int c = ((2*3)*7);
+   return c ;
+}
+}
+
